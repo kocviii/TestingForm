@@ -11,7 +11,7 @@
 :focus, :active{outline: none;}
 a:focus, a:active{outline: none;}
 
-nav,footer,header{display: block;}                                      /*all to zero*/
+nav,footer,header{display: block;}                                      
 
 html,body{
     height: 100%;
@@ -34,10 +34,10 @@ ul li{list-style: none;}
 img{vertical-align: top;}
 
 h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
-/*-----------------------------------------------------------*/
 
 
-@import url(zero-styles.css);
+
+
 body {
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   background-color: #0f0f0f;
