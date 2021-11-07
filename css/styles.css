@@ -163,11 +163,12 @@ body {
 
 @media (max-width: 1080px) {
   body {
-    width: auto;
+    max-width: 800px;
+    margin: auto;
   }
 
   .container {
-    max-width: 400px;
+    max-width: 800px;
     min-width: 120;
   }
 
@@ -176,8 +177,10 @@ body {
     height: -moz-fit-content;
     height: fit-content;
   }
+  .header__logo img {
+    min-width: 100px;
+  }
   .header__logo img:hover {
-    max-width: 100px;
     -webkit-transform: rotate(360deg);
             transform: rotate(360deg);
     translate: 0px;
