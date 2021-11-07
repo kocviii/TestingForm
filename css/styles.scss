@@ -135,8 +135,8 @@ body{
 		margin: auto;
 	}
 	.container{
-		max-width: 800px;
-		min-width: 120;
+		max-width: 1080px;
+		min-width: 120px;
 	}
 	.header{
 		height: fit-content;
@@ -162,7 +162,8 @@ body{
 		&__list a{
 			display: block;
 			margin: 10px auto 0px;
-			width: 300px;
+			max-width: 900px;
+			min-width: 300px;
 			text-align: center;
 
 		}
