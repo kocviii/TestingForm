@@ -178,7 +178,7 @@ body {
     height: fit-content;
   }
   .header__logo img {
-    min-width: 150px;
+    min-width: 200px;
   }
   .header__logo img:hover {
     -webkit-transform: rotate(360deg);
@@ -207,9 +207,9 @@ body {
             flex: 1 1 auto;
     margin: 0px auto 30px;
     max-width: 900px;
-    min-width: 120px;
+    min-width: 200px;
   }
-  .header__list a {
+  .header__link {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -222,13 +222,18 @@ body {
             flex: 1 1 auto;
     -ms-flex-line-pack: center;
         align-content: center;
-    margin: 20px auto 0px;
+    margin: 40px auto 0px;
     max-width: 900px;
     padding: 0px 40px;
     text-align: center;
     border-radius: 35px;
     font-size: 70px;
     letter-spacing: 8px;
+    -webkit-box-shadow: 0px 0px 10px black, inset 0px 4px 8px white;
+            box-shadow: 0px 0px 10px black, inset 0px 4px 8px white;
+  }
+  .header__link:hover {
+    border-radius: 35px;
   }
 
   .content__row1 {
