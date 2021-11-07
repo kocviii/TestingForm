@@ -163,7 +163,7 @@ body {
 
 @media (max-width: 1080px) {
   body {
-    max-width: 800px;
+    max-width: auto;
     margin: auto;
   }
 
