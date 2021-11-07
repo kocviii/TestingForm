@@ -162,7 +162,10 @@ body{
 			min-width: 120px;
 		}
 		&__list a{
-			display: block;
+			display: flex;
+			flex-direction: column;
+			flex: 1 1 auto;
+			align-content: center;
 			margin: 20px auto 0px;
 			max-width: 900px;
 			padding: 0px 40px;
