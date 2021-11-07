@@ -188,7 +188,7 @@ body {
   translate: 0px -1px;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 1080px) {
   .container {
     max-width: 320px;
   }
