@@ -251,6 +251,7 @@ body {
         -ms-flex-pack: justify;
             justify-content: space-between;
     margin: 0px 0px 30px;
+    font-size: 30px;
   }
   .content__row2 {
     display: -webkit-box;
@@ -267,6 +268,7 @@ body {
         -ms-flex-pack: justify;
             justify-content: space-between;
     margin-bottom: 30px;
+    font-size: 30px;
   }
 }
 .content {
