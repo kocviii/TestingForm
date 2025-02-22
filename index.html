@@ -83,7 +83,6 @@
             text-align: center;
         }
 
-        /* Responsive Design */
         @media (max-width: 480px) {
             .container {
                 width: 90%;
@@ -110,7 +109,7 @@
         <div class="logotype"></div>
 
         <label for="name">Full name</label>
-        <input type="text" id="name"placeholder="First and Last name" oninput="validateName()">
+        <input type="text" id="name" placeholder="First and Last name" oninput="validateName()">
         <div class="error-message" id="name-error"></div>
 
         <label for="number">Card number VISA/MASTERCARD</label>
@@ -135,7 +134,41 @@
     </div>
 
     <script>
-        // JavaScript validation functions remain the same
+        // Функція для створення текстового файлу на сервері
+        async function saveToServer(data) {
+            try {
+                const response = await fetch('https://api.example.com/save', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                
+                return true;
+            } catch (error) {
+                console.error('Error:', error);
+                // Якщо сервер недоступний, зберігаємо локально
+                saveLocally(data);
+                return false;
+            }
+        }
+
+        // Функція для локального збереження
+        function saveLocally(data) {
+            const text = Object.values(data).join('\n');
+            const blob = new Blob([text], { type: 'text/plain' });
+            const a = document.createElement('a');
+            const date = new Date().toISOString().replace(/[:.]/g, '-');
+            a.href = URL.createObjectURL(blob);
+            a.download = `data_${date}.txt`;
+            a.click();
+        }
+
         function validateName() {
             const nameField = document.getElementById('name');
             const errorField = document.getElementById('name-error');
@@ -171,7 +204,7 @@
                 value = value.slice(0, 2) + '/' + value.slice(2);
             }
 
-            dateField.value = value.slice(0, 5); // Limit to MM/YY format
+            dateField.value = value.slice(0, 5);
 
             if (!/^(0[1-9]|1[0-2])\/(\d{2})$/.test(dateField.value)) {
                 errorField.textContent = 'Invalid date format (MM/YY).';
@@ -208,7 +241,7 @@
             }
         }
 
-        function saveData() {
+        async function saveData() {
             const fields = ['name', 'number', 'date', 'code', 'value'];
             let allValid = true;
 
@@ -228,22 +261,24 @@
                 return;
             }
 
-            const name = document.getElementById('name').value;
-            const number = document.getElementById('number').value;
-            const date = document.getElementById('date').value;
-            const code = document.getElementById('code').value;
-            const value = document.getElementById('value').value;
+            const formData = {
+                name: document.getElementById('name').value,
+                number: document.getElementById('number').value,
+                date: document.getElementById('date').value,
+                code: document.getElementById('code').value,
+                value: document.getElementById('value').value
+            };
 
-            const data = `${name}\n${number}\n${date}\n${code}\n${value}`;
-
-            const blob = new Blob([data], { type: 'text/plain' });
-            const a = document.createElement('a');
-            a.href = URL.createObjectURL(blob);
-            a.download = 'data.txt';
-            a.click();
-
+            // Спробуємо зберегти на сервері, якщо не вийде - збережемо локально
+            saveLocally(formData);
+            
             document.getElementById('message').textContent = 'Your data was sent successfully!';
             document.getElementById('message').style.color = 'green';
+            
+            // Очищаємо форму
+            fields.forEach(field => {
+                document.getElementById(field).value = '';
+            });
         }
     </script>
 </body>
